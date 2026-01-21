@@ -218,6 +218,10 @@ section p {
     color: #0ea5e9;
     font-weight: 600;
 }
+.project-card h3,
+.project-card p {
+    color: #000000;
+}
 
 /* ================= CONTACT ================= */
 #contact a {
@@ -278,3 +282,4 @@ footer {
         grid-template-columns: 1fr;
     }
 }
+
