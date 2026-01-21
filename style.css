@@ -217,9 +217,8 @@ section p {
     text-decoration: none;
     color: #0ea5e9;
     font-weight: 600;
-}
-.project-card h3,
-.project-card p {
+    .project-card h3,
+    .project-card p {
     color: #000000;
 }
 
@@ -282,4 +281,5 @@ footer {
         grid-template-columns: 1fr;
     }
 }
+
 
