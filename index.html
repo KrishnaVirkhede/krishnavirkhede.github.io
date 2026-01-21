@@ -4,12 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Krishna | Portfolio</title>
-    <link rel="stylesheet" href="style.css">
 
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 
     <style>
+        /* ================= RESET ================= */
         * {
             margin: 0;
             padding: 0;
@@ -17,17 +17,23 @@
             font-family: 'Poppins', sans-serif;
         }
 
-        body {
-            background: #f4f6f8;
-            color: #333;
+        html {
+            scroll-behavior: smooth;
         }
 
+        body {
+            background: #020617;
+            color: #e5e7eb;
+        }
+
+        /* ================= HEADER ================= */
         header {
-            background: #0f172a;
+            background: rgba(2,6,23,0.9);
             padding: 15px 40px;
             position: sticky;
             top: 0;
             z-index: 1000;
+            backdrop-filter: blur(10px);
         }
 
         nav {
@@ -39,7 +45,7 @@
 
         .logo {
             color: #38bdf8;
-            font-size: 22px;
+            font-size: 1.4rem;
             font-weight: 700;
         }
 
@@ -50,140 +56,192 @@
         }
 
         nav ul li a {
-            color: white;
+            color: #e5e7eb;
             text-decoration: none;
             margin-left: 20px;
-            transition: 0.3s;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
         }
 
         nav ul li a:hover {
             color: #38bdf8;
         }
 
+        /* ================= HERO ================= */
         .hero {
+            position: relative;
             min-height: 90vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(to right, #0f172a, #020617);
-            color: white;
+            padding: 40px 10%;
             text-align: center;
-            padding: 20px;
+            overflow: hidden;
+
+            background: linear-gradient(
+                135deg,
+                #020617,
+                #020617,
+                #0f172a,
+                #020617
+            );
+            background-size: 300% 300%;
+            animation: cinematicMove 16s ease-in-out infinite;
+        }
+
+        @keyframes cinematicMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Glow layer */
+        .color-glow {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(
+                circle,
+                rgba(56,189,248,0.25),
+                rgba(15,23,42,0.2),
+                transparent 65%
+            );
+            filter: blur(120px);
+            animation: glowMove 18s ease-in-out infinite alternate;
+        }
+
+        @keyframes glowMove {
+            0% { transform: translate(-250px, -200px); }
+            100% { transform: translate(250px, 200px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 700;
         }
 
         .hero span {
             color: #38bdf8;
         }
 
-        .hero p {
+        .hero h3 {
             margin-top: 10px;
+            font-size: 1.2rem;
+            font-weight: 500;
+            opacity: 0.9;
+        }
+
+        .hero p {
+            margin-top: 12px;
+            font-size: 0.95rem;
+            opacity: 0.8;
         }
 
         .hero button {
-            margin-top: 20px;
-            padding: 10px 25px;
+            margin-top: 30px;
+            padding: 12px 28px;
             border: none;
+            border-radius: 8px;
             background: #38bdf8;
-            color: black;
-            font-weight: bold;
-            border-radius: 5px;
+            color: #020617;
+            font-weight: 600;
             cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
+        .hero button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(56,189,248,0.35);
+        }
+
+        /* ================= SECTIONS ================= */
         section {
-            padding: 60px 10%;
+            padding: 70px 10%;
             text-align: center;
+            background: #020617;
         }
 
         section h2 {
-            margin-bottom: 20px;
-            color: #0f172a;
-        }
-
-        .dark {
-            background: #0f172a;
-            color: white;
-        }
-
-        .dark h2 {
+            font-size: 2rem;
+            margin-bottom: 18px;
             color: #38bdf8;
         }
 
-        .skills-grid,
-        .projects-grid {
+        section p {
+            max-width: 700px;
+            margin-inline: auto;
+            font-size: 0.95rem;
+            color: #cbd5f5;
+        }
+
+        /* ================= SKILLS ================= */
+        .skills-grid {
+            margin-top: 35px;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 18px;
         }
 
         .skill {
-            background: #38bdf8;
-            padding: 15px;
-            border-radius: 8px;
-            font-weight: bold;
-            color: black;
+            background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+            padding: 14px;
+            border-radius: 10px;
+            font-weight: 600;
+            color: #020617;
+        }
+
+        /* ================= PROJECTS ================= */
+        .projects-grid {
+            margin-top: 35px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
         }
 
         .project-card {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 14px;
             text-align: left;
+            color: #020617;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
         }
 
         .project-card a {
             display: inline-block;
             margin-top: 12px;
-            color: #38bdf8;
-            font-weight: 600;
             text-decoration: none;
+            color: #0ea5e9;
+            font-weight: 600;
         }
 
-        .project-card a:hover {
-            text-decoration: underline;
+        /* ================= CONTACT ================= */
+        #contact a {
+            color: #38bdf8;
+            text-decoration: none;
+            font-weight: 500;
         }
 
+        /* ================= FOOTER ================= */
         footer {
             background: #020617;
-            color: white;
+            color: #94a3b8;
             text-align: center;
-            padding: 15px;
+            padding: 18px;
+            font-size: 0.85rem;
         }
 
-        /* MOBILE RESPONSIVE */
+        /* ================= MOBILE ================= */
         @media (max-width: 768px) {
-
-            header {
-                padding: 15px 20px;
-            }
-
-            nav {
-                flex-direction: column;
-                gap: 10px;
-            }
-
-            nav ul {
-                justify-content: center;
-            }
-
-            nav ul li a {
-                margin: 5px 10px;
-                font-size: 14px;
-            }
-
-            .hero h1 {
-                font-size: 26px;
-            }
-
-            section {
-                padding: 50px 8%;
-            }
-
-            .skills-grid,
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
+            header { padding: 15px 20px; }
+            nav { flex-direction: column; gap: 10px; }
+            nav ul { justify-content: center; }
+            .hero h1 { font-size: 2.2rem; }
         }
     </style>
 </head>
@@ -199,17 +257,15 @@
             <li><a href="#skills">Skills</a></li>
             <li><a href="#projects">Projects</a></li>
             <li><a href="#contact">Contact</a></li>
-            <li>
-                <a href="https://github.com/KrishnaVirkhede" target="_blank">
-                    GitHub
-                </a>
-            </li>
+            <li><a href="https://github.com/KrishnaVirkhede" target="_blank">GitHub</a></li>
         </ul>
     </nav>
 </header>
 
 <section id="home" class="hero">
-    <div>
+    <div class="color-glow"></div>
+
+    <div class="hero-content">
         <h1>Hi, I'm <span>Krishna</span></h1>
         <h3>Artificial Intelligence & Data Science Student | Developer</h3>
         <p>I build clean, modern and efficient applications.</p>
@@ -222,14 +278,12 @@
 <section id="about">
     <h2>About Me</h2>
     <p>
-        I am an Artificial Intelligence & Data Science student passionate about
-        machine learning, problem-solving, and building real-world applications.
-        I focus on strengthening my fundamentals through hands-on projects,
-        Data Structures & Algorithms practice, and continuous learning.
+        I am an AI & Data Science student passionate about machine learning,
+        problem-solving, and building real-world applications through hands-on projects.
     </p>
 </section>
 
-<section id="skills" class="dark">
+<section id="skills">
     <h2>Skills</h2>
     <div class="skills-grid">
         <div class="skill">HTML</div>
@@ -244,40 +298,26 @@
 <section id="projects">
     <h2>Projects</h2>
     <div class="projects-grid">
-
         <div class="project-card">
-            <h3>Japanese Voice Assistance</h3>
-            <p>
-                A real-time Python-based Japanese voice assistant for basic conversational
-                practice using speech recognition and text-to-speech
-            </p>
-            <p><strong>Tech:</strong> Python</p>
-            <a href="https://github.com/KrishnaVirkhede/japanese-voice-assistant" target="_blank">
-                View on GitHub →
-            </a>
+            <h3>Japanese Voice Assistant</h3>
+            <p>A real-time Python-based Japanese voice assistant for conversational practice.</p>
+            <a href="https://github.com/KrishnaVirkhede" target="_blank">View on GitHub →</a>
         </div>
 
         <div class="project-card">
             <h3>Hand Detection using YOLOv8</h3>
-            <p>
-                A real-time hand detection system using YOLOv8 and OpenCV
-                with live webcam video processing.
-            </p>
-            <p><strong>Tech:</strong> Python, OpenCV, YOLOv8</p>
-            <a href="https://github.com/KrishnaVirkhede/MoreAdvanceTCDS" target="_blank">
-                View on GitHub →
-            </a>
+            <p>Real-time hand detection using YOLOv8 and OpenCV with webcam input.</p>
+            <a href="https://github.com/KrishnaVirkhede" target="_blank">View on GitHub →</a>
         </div>
-
     </div>
 </section>
 
-<section id="contact" class="dark">
+<section id="contact">
     <h2>Contact</h2>
-    <p>Email: krishnadypcoei@gmail.cpm</p>
+    <p>Email: krishna@example.com</p>
     <p>
         GitHub:
-        <a href="https://github.com/KrishnaVirkhede" target="_blank" style="color:#38bdf8;">
+        <a href="https://github.com/KrishnaVirkhede" target="_blank">
             github.com/KrishnaVirkhede
         </a>
     </p>
@@ -289,6 +329,3 @@
 
 </body>
 </html>
-
-
-
